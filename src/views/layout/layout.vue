@@ -8,7 +8,9 @@
                 <admin-nav-left/>
                 <admin-nav-right/>
             </el-header>
-            <el-main>Main</el-main>
+            <el-main>
+                <router-view/>
+            </el-main>
         </el-container>
     </el-container>
 </template>
@@ -52,10 +54,7 @@ export default {
 }
 
 .el-main {
-    background-color: #E9EEF3;
-    color: #333;
-    text-align: center;
-    line-height: 160px;
+   background: #f2f2f2;
 }
 
 

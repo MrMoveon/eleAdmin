@@ -2,7 +2,7 @@
     <div>
         <div class="admin-logo">
             <span v-if="!asideCollapse">ElementAdmin</span>
-            <span v-else>M</span>
+            <span v-else><img src="../../assets/images/top-logo.png" alt=""></span>
         </div>
         <el-menu :default-openeds="['1']" default-active="1-1" :unique-opened="true" :collapse-transition="false" class="el-menu-vertical-demo" background-color="#03152a" text-color="#b3b9bf" @open="handleOpen" @close="handleClose" :collapse="asideCollapse">
             <el-submenu index="1">
