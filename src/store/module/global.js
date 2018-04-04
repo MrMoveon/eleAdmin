@@ -10,7 +10,7 @@ const global = {
             return state.asideCollapse=!state.asideCollapse
         },
         setAsideWidth(state){
-           return state.asideWidth=state.asideCollapse?'65px':'220px';
+           return state.asideWidth=state.asideCollapse?'64px':'220px';
         }
     },
     actions: {

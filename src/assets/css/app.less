@@ -12,6 +12,10 @@ a{
     color: #333;
     text-decoration: none;
 }
+p{
+    margin:0;
+    padding:0;
+}
 .theme-dark-blue{
     @bgcolor:#03152a;
     .admin-logo{
@@ -31,4 +35,28 @@ a{
 }
 .el-card__body{
     padding: 10px 15px;
+}
+// 重置card里面轮播的样式
+.admin-card-carousel{
+    &.el-carousel{
+        overflow:initial;
+    }
+    .el-carousel__container{
+        overflow: hidden;
+    }
+    .el-carousel__button{
+        width: 10px;
+        height: 10px;
+    }
+    .el-carousel__indicators--outside {
+        bottom: auto;
+        position: absolute;
+        text-align: right;
+        right: 0;
+        top: -45px;
+        button {
+            background-color: #c0c4cc;
+            border-radius: 50%;
+        }
+    }
 }

@@ -19,7 +19,7 @@ export default {
             'asideCollapse'
         ]),
         shrink(){
-            return this.$store.state.global.asideCollapse?'ele-icon-shrink-right':'ele-icon-spread-left';
+            return this.$store.state.global.asideCollapse?'ele-icon-spread-left':'ele-icon-shrink-right';
         }
     },
     methods:{

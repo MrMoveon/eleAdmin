@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <div class="admin-logo">
+    <div class="admin-aside">
+        <div class="admin-logo" :style="{'width':asideWidth}">
             <span v-if="!asideCollapse">ElementAdmin</span>
             <span v-else><img src="../../assets/images/top-logo.png" alt=""></span>
         </div>
@@ -71,6 +71,10 @@ export default {
         };
     },
     computed:{
+       
+        asideWidth(){
+            return this.$store.state.global.asideWidth
+        },
         asideCollapse(){
             return this.$store.state.global.asideCollapse
         }
@@ -87,17 +91,27 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.admin-aside{
+    position: relative;
+    height: 100%;
+}
 .el-menu-vertical-demo:not(.el-menu--collapse) {
     width: 220px;
     
 }
 .el-menu{
     border-right: none;
+    padding-top:50px;
 }
 .el-menu-item{
     padding-left:50px;
 }
 .admin-logo{
+    position: fixed;
+    width: 220px;
+    top: 0;
+    left:0;
+    z-index: 9;
     height: 50px;
     line-height: 50px;
     color:rgba(255,255,255,0.7);
