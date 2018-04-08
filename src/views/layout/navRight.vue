@@ -4,12 +4,11 @@
             <el-badge is-dot class="admin-nav-dot">
                 <i class="ele-icon-notice"></i>
             </el-badge>
-
         </el-menu-item>
-        <el-menu-item index="2">
+        <el-menu-item index="2" class="hidden-md-and-down">
             <i class="ele-icon-theme"></i>
         </el-menu-item>
-        <el-menu-item index="3">
+        <el-menu-item index="3" class="hidden-md-and-down">
             <i class="ele-icon-note"></i>
         </el-menu-item>
         <el-submenu index="4">
@@ -50,7 +49,7 @@ export default {
     border-bottom: none;
     &>.el-menu-item {
         padding: 0 0px;
-        margin: 0 20px;
+        margin: 0 15px;
         height: 48px;
         line-height: 46px;
         border-top: 2px solid #fff;

@@ -180,11 +180,13 @@
                         <div slot="header">
                             <span>数据概览</span>
                         </div>
+                        
                         <el-carousel class="admin-card-carousel" indicator-position="outside" :autoplay="false" arrow="never" height="344px">
                             <el-carousel-item>
-                                <echarts name="echarts01" height="344px" :options="pvuvOptions"></echarts>
+                                <ve-line ref="echart01" :theme="chart01Theme" :title="chart01Title" :legend="chart01Legend" :data="chart01Data" :settings="chart01Settings" :extend="chart01Extend"></ve-line>
                             </el-carousel-item>
                             <el-carousel-item>
+                                <ve-pie ref="echart02"  :theme="chart01Theme" :data="chart02Data" :legend-position="chart02LegendPosition"></ve-pie>
                                <echarts name="echarts02" height="344px" :options="browerOptions"></echarts>
                             </el-carousel-item>
                         </el-carousel>
@@ -326,7 +328,7 @@
 
 <script>
 import echarts from "@/components/echarts";
-// import echartsTheme from './echartsTheme'
+import echartsTheme from "./echartsTheme";
 export default {
   name: "console",
   data() {
@@ -351,48 +353,7 @@ export default {
         }
       ],
       //   今日流量趋势
-      pvuvOptions: {
-        title: {
-          text: "今日流量趋势",
-          textStyle: {
-            fontSize: 14
-          },
-          x: "center"
-        },
-        tooltip: {
-          trigger: "axis"
-        },
-        grid: {
-          left: "3%",
-          right: "3%",
-          bottom: "3%",
-          containLabel: true
-        },
-        xAxis: {
-          type: "category",
-          boundaryGap: false,
-          data: ["周一", "周二", "周三", "周四", "周五", "周六", "周日"]
-        },
-        yAxis: {
-          type: "value"
-        },
-        series: [
-          {
-            name: "uv",
-            type: "line",
-            symbolSize: 8,
-            areaStyle: { normal: {} },
-            data: [0, 182, 400, 234, 160, 330, 0]
-          },
-          {
-            name: "pv",
-            type: "line",
-            symbolSize: 8,
-            areaStyle: { normal: {} },
-            data: [0, 132, 300, 134, 190, 230, 0]
-          }
-        ]
-      },
+
       //   游客浏览器分布
       browerOptions: {
         title: {
@@ -478,8 +439,8 @@ export default {
         email: [
           { required: true, message: "请输入您的邮箱，方便我们联系", trigger: "blur" },
           { type: "email", message: "请输入正确的邮箱地址", trigger: "blur,change" }
-		],
-		name: [{ required: true, message: "请填写姓名", trigger: "blur" }],
+        ],
+        name: [{ required: true, message: "请填写姓名", trigger: "blur" }],
         desc: [{ required: true, message: "请填写反馈内容", trigger: "blur" }]
       }
     };
@@ -487,7 +448,81 @@ export default {
   components: {
     echarts
   },
-  mounted() {},
+  created() {
+    //   设置主题
+    this.chart01Theme = echartsTheme;
+    // 设置数据
+    this.chart01Data = {
+      columns: ["日期", "uv", "pv"],
+      rows: [
+        { 日期: "周一", pv: 0, uv: 0 },
+        { 日期: "周二", pv: 132, uv: 182 },
+        { 日期: "周三", pv: 300, uv: 400 },
+        { 日期: "周四", pv: 134, uv: 234 },
+        { 日期: "周五", pv: 190, uv: 160 },
+        { 日期: "周六", pv: 230, uv: 330 },
+        { 日期: "周日", pv: 0, uv: 0 }
+      ]
+    };
+    // 设置标题
+    this.chart01Title = {
+      text: "今日流量趋势",
+      textStyle: {
+        fontSize: 14
+      },
+      x: "center"
+    };
+    // 设置图例
+    this.chart01Legend = {
+      show: false
+    };
+    // 图标内置属性设置
+    this.chart01Settings = {
+      area: true
+    };
+    //对配置好的属性单独设置
+    this.chart01Extend = {
+      series(v) {
+        v.forEach((item, num) => {
+          // 设置数据点
+          item.symbolSize = 8;
+        });
+        return v;
+      },
+      yAxis(v) {
+        v.forEach((item, num) => {
+            // 去掉右侧的Y轴
+          if (num === 1) {
+            item.axisLine = {
+              show: false,
+              lineStyle: { color: "#409EFF", width: 2 }
+            };
+          }
+        });
+        return v;
+      }
+    };
+
+    this.chart02Data = {
+      columns: ['访问来源', '数量'],
+      rows: [
+        { '访问来源': '直接访问', '数量': 335},
+        { '访问来源': '邮件营销', '数量': 1500},
+        { '访问来源': '联盟广告', '数量': 234},
+        { '访问来源': '视频广告', '数量': 135},
+        { '访问来源': '搜索引擎', '数量': 300}
+      ]
+    }
+
+    
+    this.chart02LegendPosition = 'left'
+
+  },
+  mounted() {
+    window.addEventListener("resize", () => {
+      this.$refs.echart01.resize();
+    });
+  },
   methods: {
     handleClick(row) {
       console.log(row);

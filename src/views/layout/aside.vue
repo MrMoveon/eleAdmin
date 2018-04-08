@@ -4,7 +4,7 @@
             <span v-if="!asideCollapse">ElementAdmin</span>
             <span v-else><img src="../../assets/images/top-logo.png" alt=""></span>
         </div>
-        <el-menu :default-openeds="['1']" default-active="1-1" :unique-opened="true" :collapse-transition="false" class="el-menu-vertical-demo" background-color="#03152a" text-color="#b3b9bf" @open="handleOpen" @close="handleClose" :collapse="asideCollapse">
+        <el-menu :default-openeds="['1']" default-active="1-1" :unique-opened="true" :collapse-transition="true" class="el-menu-vertical-demo" background-color="#03152a" text-color="#b3b9bf" @open="handleOpen" @close="handleClose" :collapse="asideCollapse">
             <el-submenu index="1">
                 <template slot="title">
                     <i class="ele-icon-home"></i>
@@ -90,36 +90,8 @@ export default {
 }
 </script>
 
-<style lang="less" scoped>
-.admin-aside{
-    position: relative;
-    height: 100%;
-}
-.el-menu-vertical-demo:not(.el-menu--collapse) {
-    width: 220px;
-    
-}
-.el-menu{
-    border-right: none;
-    padding-top:50px;
-}
-.el-menu-item{
-    padding-left:50px;
-}
-.admin-logo{
-    position: fixed;
-    width: 220px;
-    top: 0;
-    left:0;
-    z-index: 9;
-    height: 50px;
-    line-height: 50px;
-    color:rgba(255,255,255,0.7);
-    text-align: center;
-    font-size: 16px;
-    
-}
-.el-menu [class^=ele-icon-] {
-    margin-right: 5px;
-}
+<style lang="less">
+
+
+
 </style>

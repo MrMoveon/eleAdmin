@@ -18,6 +18,10 @@ p{
 }
 .theme-dark-blue{
     @bgcolor:#03152a;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 100%;
     .admin-logo{
         background-color: @bgcolor;
     }
@@ -59,4 +63,107 @@ p{
             border-radius: 50%;
         }
     }
+}
+// left
+.admin-aside{
+    position: absolute;
+    left:0;
+    top: 0;
+    bottom: 0;
+    z-index: 1001;
+    overflow: hidden;
+    transition: all .3s;
+    &>.el-menu{
+        height: 100%;
+        border-right: none;
+        padding-top:50px;
+        overflow-x: hidden;
+        box-sizing: border-box;
+        // 隐藏滚动条
+        &::-webkit-scrollbar {
+            width: 0px;
+            height: 0px;
+        }  
+        
+    }
+    .el-menu-item{
+        padding-left:50px;
+    }
+    .el-menu-vertical-demo:not(.el-menu--collapse) {
+        width: 220px;
+        
+    }
+    .admin-logo{
+        position: absolute;
+        width: 220px;
+        top: 0;
+        left:0;
+        z-index: 9;
+        height: 50px;
+        line-height: 50px;
+        color:rgba(255,255,255,0.7);
+        text-align: center;
+        font-size: 16px;
+        transition: all .3s;
+    }
+    .el-menu [class^=ele-icon-] {
+        margin-right: 5px;
+    }
+}
+// right
+.admin-wrap-right{
+    position: absolute;
+    left:220px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    transition: all .3s;
+    
+}
+.admin-pc-fold{
+    .admin-aside{
+        transform: translateX(0px);
+    }
+    .admin-wrap-right{
+        left:65px;
+        transform: translateX(0px);
+    }
+    .el-menu--collapse{
+        width: 65px;
+    }
+}
+.admin-body-shadow{
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,.3);
+    z-index: 1000;
+}
+// 移动端处理
+@media only screen and (max-width: 992px){
+    .admin-aside{
+        transform: translateX(-220px);
+    }
+    .el-menu--collapse {
+        width: 0px;
+    }
+    .admin-wrap-right{
+            left:0px;
+            transform: translateX(0px);
+    }
+    .admin-fold{
+        .admin-aside{
+            transform: translateX(0px);
+        }
+        .admin-wrap-right{
+            left:0px;
+            transform: translateX(220px);
+        }
+        .el-menu--collapse{
+            width: 220px;
+        }
+    }
+   
 }
