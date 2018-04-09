@@ -180,10 +180,9 @@
                         <div slot="header">
                             <span>数据概览</span>
                         </div>
-                        
                         <el-carousel class="admin-card-carousel" indicator-position="outside" :autoplay="false" arrow="never" height="344px">
                             <el-carousel-item>
-                                <ve-line ref="echart01" :theme="chart01Theme" :title="chart01Title" :legend="chart01Legend" :data="chart01Data" :settings="chart01Settings" :extend="chart01Extend"></ve-line>
+                                <ve-line ref="echart01" :theme="chart01Theme" height="344px" :title="chart01Title" :legend="chart01Legend" :data="chart01Data" :settings="chart01Settings" :extend="chart01Extend"></ve-line>
                             </el-carousel-item>
                             <el-carousel-item>
                                 <ve-pie ref="echart02"  :theme="chart01Theme" :data="chart02Data" :legend-position="chart02LegendPosition"></ve-pie>

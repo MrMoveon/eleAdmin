@@ -4,41 +4,19 @@
             <span v-if="!asideCollapse">ElementAdmin</span>
             <span v-else><img src="../../assets/images/top-logo.png" alt=""></span>
         </div>
-        <el-menu :default-openeds="['1']" default-active="1-1" :unique-opened="true" :collapse-transition="true" class="el-menu-vertical-demo" background-color="#03152a" text-color="#b3b9bf" @open="handleOpen" @close="handleClose" :collapse="asideCollapse">
-            <el-submenu index="1">
-                <template slot="title">
-                    <i class="ele-icon-home"></i>
-                    <span slot="title">主页</span>
-                </template>
-                <el-menu-item index="1-1" :style="subMenuLeft">控制台</el-menu-item>
-            </el-submenu>
-            <el-submenu index="2">
+        <el-menu :default-openeds="['1']" default-active="1" router :unique-opened="true" :collapse-transition="true" class="el-menu-vertical-demo" background-color="#03152a" text-color="#b3b9bf" @open="handleOpen" @close="handleClose" :collapse="asideCollapse">
+            <el-menu-item index="1" :route="{name:'home'}">
+                <i class="ele-icon-home"></i>
+                <span slot="title">主页</span>
+            </el-menu-item>
+            <el-submenu index="2" class="child-padding">
                  <template slot="title">
                     <i class="ele-icon-component"></i>
                     <span slot="title">组件</span>
                 </template>
-                <el-menu-item index="2-1" :style="subMenuLeft">栅格</el-menu-item>
-                <el-menu-item index="2-2" :style="subMenuLeft">按钮</el-menu-item>
-                <el-menu-item index="2-3" :style="subMenuLeft">按钮</el-menu-item>
-                <el-menu-item index="2-4" :style="subMenuLeft">按钮</el-menu-item>
-                <el-menu-item index="2-5" :style="subMenuLeft">按钮</el-menu-item>
-                <el-menu-item index="2-6" :style="subMenuLeft">按钮</el-menu-item>
-                <el-menu-item index="2-7" :style="subMenuLeft">按钮</el-menu-item>
-
-                <el-menu-item index="2-8" :style="subMenuLeft">按钮</el-menu-item>
-                <el-menu-item index="2-9" :style="subMenuLeft">按钮</el-menu-item>
-                <el-menu-item index="2-10" :style="subMenuLeft">按钮</el-menu-item>
-                <el-menu-item index="2-11" :style="subMenuLeft">按钮</el-menu-item>
-                <el-menu-item index="2-12" :style="subMenuLeft">按钮</el-menu-item>
-                <el-menu-item index="2-13" :style="subMenuLeft">按钮</el-menu-item>
-                <el-menu-item index="2-14" :style="subMenuLeft">按钮</el-menu-item>
-                <el-menu-item index="2-15" :style="subMenuLeft">按钮</el-menu-item>
-                <el-menu-item index="2-16" :style="subMenuLeft">按钮</el-menu-item>
-                <el-menu-item index="2-17" :style="subMenuLeft">按钮</el-menu-item>
-                <el-menu-item index="2-18" :style="subMenuLeft">按钮</el-menu-item>
-                <el-menu-item index="2-19" :style="subMenuLeft">按钮</el-menu-item>
-                <el-menu-item index="2-20" :style="subMenuLeft">按钮</el-menu-item>
-                <el-menu-item index="2-21" :style="subMenuLeft">按钮</el-menu-item>
+                <el-menu-item index="2-1">栅格</el-menu-item>
+                <el-menu-item index="2-2">按钮</el-menu-item>
+                
             </el-submenu>
             <el-menu-item index="3">
                 <i class="ele-icon-template"></i>
@@ -52,46 +30,70 @@
                 <i class="ele-icon-user"></i>
                 <span slot="title">用户</span>
             </el-menu-item>
-            <el-menu-item index="6">
-                <i class="ele-icon-set"></i>
-                <span slot="title">设置</span>
-            </el-menu-item>
+            <el-submenu index="6">
+                <template slot="title">
+                    <i class="ele-icon-set"></i>
+                    <span slot="title">设置</span>
+                </template>
+                <el-submenu index="6-1" class="parent-padding">
+                    <template slot="title">系统设置</template>
+                    <el-menu-item index="6-1-1">网站设置</el-menu-item>
+                    <el-menu-item index="6-1-2">邮箱设置</el-menu-item>
+                </el-submenu>
+                <el-submenu index="6-2" class="parent-padding">
+                    <template slot="title">我的设置</template>
+                    <el-menu-item index="6-2-1" :route="{name:'info'}">基本资料</el-menu-item>
+                    <el-menu-item index="6-2-2" :route="{name:'password'}">我的密码</el-menu-item>
+                </el-submenu>
+            </el-submenu>
         </el-menu>
     </div>
 </template>
 
 <script>
-import {mapState} from 'vuex'
+import { mapState } from "vuex";
 export default {
-    name:'layout-aside',
-    data() {
-        return {
-            isCollapse: true,
-            subMenuLeft:{"paddingLeft":'52px'}
-        };
+  name: "layout-aside",
+  data() {
+    return {
+      isCollapse: true,
+      subMenuLeft: { paddingLeft: "52px" }
+    };
+  },
+  computed: {
+    asideWidth() {
+      return this.$store.state.global.asideWidth;
     },
-    computed:{
-       
-        asideWidth(){
-            return this.$store.state.global.asideWidth
-        },
-        asideCollapse(){
-            return this.$store.state.global.asideCollapse
-        }
-    },
-    methods: {
-        handleOpen(key, keyPath) {
-            console.log(key, keyPath);
-        },
-        handleClose(key, keyPath) {
-            console.log(key, keyPath);
-        }
+    asideCollapse() {
+      return this.$store.state.global.asideCollapse;
     }
-}
+  },
+  methods: {
+    handleOpen(key, keyPath) {
+      console.log(key, keyPath);
+    },
+    handleClose(key, keyPath) {
+      console.log(key, keyPath);
+    }
+  }
+};
 </script>
 
-<style lang="less">
-
-
-
+<style lang="less" >
+// 二级
+.child-padding{
+    .el-menu-item {
+      padding-left:56px !important;
+    }
+}
+// 三级
+.parent-padding {
+   .el-submenu__title {
+    padding-left: 56px !important;
+    
+  }
+  .el-menu-item {
+      padding-left: 80px !important;
+    }
+}
 </style>

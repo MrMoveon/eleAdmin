@@ -42,7 +42,7 @@ export default {
                 this.setAsideWidth()
             }
             if(key==='4'){
-               // this.setAsideWidth('220px')
+               this.setAsideWidth('220px')
                this.setAsideCollapse({flag:false})
                this.$store.commit('setMobielCollapse')
             }
