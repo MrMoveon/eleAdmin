@@ -4,11 +4,14 @@
             <span v-if="!asideCollapse">ElementAdmin</span>
             <span v-else><img src="../../assets/images/top-logo.png" alt=""></span>
         </div>
-        <el-menu :default-openeds="['1']" default-active="1" router :unique-opened="true" :collapse-transition="true" class="el-menu-vertical-demo" background-color="#03152a" text-color="#b3b9bf" @open="handleOpen" @close="handleClose" :collapse="asideCollapse">
-            <el-menu-item index="1" :route="{name:'home'}">
-                <i class="ele-icon-home"></i>
-                <span slot="title">主页</span>
-            </el-menu-item>
+        <el-menu :default-openeds="['1']" default-active="1-1" router :unique-opened="true" :collapse-transition="true" class="el-menu-vertical-demo" background-color="#03152a" text-color="#b3b9bf" @open="handleOpen" @close="handleClose" :collapse="asideCollapse">
+            <el-submenu index="1"  class="child-padding">
+                <template slot="title">
+                    <i class="ele-icon-home"></i>
+                    <span slot="title">主页</span>
+                </template>
+                <el-menu-item index="1-1" :route="{name:'home'}">控制台</el-menu-item>
+            </el-submenu>
             <el-submenu index="2" class="child-padding">
                  <template slot="title">
                     <i class="ele-icon-component"></i>

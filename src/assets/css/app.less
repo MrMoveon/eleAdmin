@@ -1,5 +1,5 @@
 @import '../font/iconfont.less';
-
+@import './normalize.css';
 html,body{
     margin: 0;
     padding: 0;
@@ -64,7 +64,7 @@ p{
         }
     }
 }
-// left
+// aside
 .admin-aside{
     position: absolute;
     left:0;
@@ -86,8 +86,15 @@ p{
         }  
         
     }
+    .el-submenu.is-active.is-opened > .el-submenu__title{
+        color:#fff!important;
+    }
     .el-menu-item{
         padding-left:50px;
+        &.is-active{
+            color:#fff;
+            background: #409EFF!important;
+        }
     }
     .el-menu-vertical-demo:not(.el-menu--collapse) {
         width: 220px;
@@ -109,8 +116,12 @@ p{
     .el-menu [class^=ele-icon-] {
         margin-right: 5px;
     }
+    .el-submenu .el-menu-item{
+        height: 40px;
+        line-height: 40px;
+    }
 }
-// right
+//content right
 .admin-wrap-right{
     position: absolute;
     left:220px;
