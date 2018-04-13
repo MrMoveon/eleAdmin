@@ -21,14 +21,14 @@ import navRight from './navRight'
 import { mapGetters } from 'vuex'
 export default {
   name: 'layout',
-  data () {
+  data() {
     return {
       asideWidth: '220px'
     }
   },
   computed: {
     ...mapGetters(['isPc', 'pcAsideCollapse', 'mobielCollapse']),
-    collapse () {
+    collapse() {
       if (this.isPc) {
         return this.pcAsideCollapse ? 'admin-pc-fold' : ''
       } else {
@@ -42,7 +42,7 @@ export default {
     adminNavRight: navRight
   },
   methods: {
-    hideAside () {
+    hideAside() {
       this.$store.commit('setAsideCollapse', { flag: false })
       this.$store.commit('setMobielCollapse')
     }

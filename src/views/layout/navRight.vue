@@ -27,7 +27,7 @@
 export default {
   name: 'admin-nav-right',
   methods: {
-    handleSelect (key, keyPath) {
+    handleSelect(key, keyPath) {
       console.log(key, keyPath)
     }
   }

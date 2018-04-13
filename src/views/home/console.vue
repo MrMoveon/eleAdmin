@@ -182,7 +182,6 @@
                             </el-carousel-item>
                             <el-carousel-item>
                                 <ve-pie ref='echart02'  :theme='chart01Theme' :data='chart02Data' :legend-position='chart02LegendPosition'></ve-pie>
-                               <echarts name='echarts02' height='344px' :options='browerOptions'></echarts>
                             </el-carousel-item>
                         </el-carousel>
                     </el-card>
@@ -325,7 +324,7 @@
 import echartsTheme from './echartsTheme'
 export default {
   name: 'console',
-  data () {
+  data() {
     return {
       //    版本信息
       vesionData: [
@@ -388,15 +387,23 @@ export default {
       },
       rules: {
         email: [
-          { required: true, message: '请输入您的邮箱，方便我们联系', trigger: 'blur' },
-          { type: 'email', message: '请输入正确的邮箱地址', trigger: 'blur,change' }
+          {
+            required: true,
+            message: '请输入您的邮箱，方便我们联系',
+            trigger: 'blur'
+          },
+          {
+            type: 'email',
+            message: '请输入正确的邮箱地址',
+            trigger: 'blur,change'
+          }
         ],
         name: [{ required: true, message: '请填写姓名', trigger: 'blur' }],
         desc: [{ required: true, message: '请填写反馈内容', trigger: 'blur' }]
       }
     }
   },
-  created () {
+  created() {
     //   设置主题
     this.chart01Theme = echartsTheme
     //  设置数据
@@ -430,14 +437,14 @@ export default {
     }
     //  对配置好的属性单独设置
     this.chart01Extend = {
-      series (v) {
+      series(v) {
         v.forEach((item, num) => {
           // 设置数据点
           item.symbolSize = 8
         })
         return v
       },
-      yAxis (v) {
+      yAxis(v) {
         v.forEach((item, num) => {
           //    去掉右侧的Y轴
           if (num === 1) {
@@ -464,23 +471,23 @@ export default {
 
     this.chart02LegendPosition = 'left'
   },
-  mounted () {
+  mounted() {
     //   监听窗口变化，重置echart尺寸
     window.addEventListener('resize', this.resizeEchart())
   },
-  beforeDestroy () {
+  beforeDestroy() {
     //   实例销毁之前，移除监听
     window.removeEventListener('resize', this.resizeEchart())
   },
   methods: {
     //  重置echart尺寸
-    resizeEchart () {
+    resizeEchart() {
       this.$refs.echart01.resize()
     },
-    handleClick (row) {
+    handleClick(row) {
       console.log(row)
     },
-    submitForm (formName) {
+    submitForm(formName) {
       this.$refs[formName].validate(valid => {
         if (valid) {
           alert('submit!')
@@ -491,7 +498,7 @@ export default {
       })
     },
     //  重置form
-    resetForm (formName) {
+    resetForm(formName) {
       this.$refs[formName].resetFields()
     }
   }

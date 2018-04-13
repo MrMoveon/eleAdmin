@@ -91,7 +91,7 @@
 
 <script>
 export default {
-  data () {
+  data() {
     return {
       activeName: 'first',
       form: {
@@ -118,24 +118,24 @@ export default {
     }
   },
   methods: {
-    handleClick (tab, event) {
+    handleClick(tab, event) {
       console.log(tab, event)
     },
-    onSubmit () {
+    onSubmit() {
       this.$message({
         showClose: true,
         message: '保存成功',
         type: 'success'
       })
     },
-    onSubmitEmail () {
+    onSubmitEmail() {
       this.$message({
         showClose: true,
         message: '保存成功',
         type: 'success'
       })
     },
-    onSubmitSafe () {
+    onSubmitSafe() {
       this.$message({
         showClose: true,
         message: '保存成功',

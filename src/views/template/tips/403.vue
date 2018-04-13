@@ -1,13 +1,13 @@
 <template>
     <div>
-        <cms-error icon='ele-icon-404' tips-text='莫有办法,找不到这个页面~~~'></cms-error>
+        <cms-error icon='ele-icon-403' tips-text='无权限查看当前页面~~~'></cms-error>
     </div>
 </template>
 
 <script>
 import error from '@/components/error'
 export default {
-  name: 'error-404',
+  name: 'error-403',
   components: {
     'cms-error': error
   }

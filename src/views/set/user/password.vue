@@ -31,7 +31,7 @@
 <script>
 export default {
   name: 'password',
-  data () {
+  data() {
     var validateOldPass = (rule, value, callback) => {
       if (value === '') {
         callback(new Error('请输入密码'))
@@ -75,7 +75,7 @@ export default {
     }
   },
   methods: {
-    submitForm (formName) {
+    submitForm(formName) {
       this.$refs[formName].validate(valid => {
         if (valid) {
           alert('submit!')
@@ -85,7 +85,7 @@ export default {
         }
       })
     },
-    resetForm (formName) {
+    resetForm(formName) {
       this.$refs[formName].resetFields()
     }
   }

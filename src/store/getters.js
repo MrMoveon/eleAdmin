@@ -1,17 +1,17 @@
 export default {
-  isPc (state) {
+  isPc(state) {
     return state.global.isPc
   },
-  mobielCollapse (state) {
+  mobielCollapse(state) {
     return state.global.mobielCollapse
   },
-  pcAsideHide (state) {
+  pcAsideHide(state) {
     return state.global.asideHide
   },
-  pcAsideCollapse (state) {
+  pcAsideCollapse(state) {
     return state.global.asideCollapse
   },
-  pcAsideWidth (state) {
+  pcAsideWidth(state) {
     return state.global.asideWidth
   }
 }

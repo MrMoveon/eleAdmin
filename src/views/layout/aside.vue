@@ -20,10 +20,15 @@
                 <el-menu-item index="2-1">栅格</el-menu-item>
                 <el-menu-item index="2-2">按钮</el-menu-item>
             </el-submenu>
-            <el-menu-item index="3">
-                <i class="ele-icon-plane"></i>
-                <span slot="title">模板</span>
-            </el-menu-item>
+            <el-submenu index="3"  class="child-padding">
+                <template slot="title">
+                    <i class="ele-icon-plane"></i>
+                    <span slot="title">模板</span>
+                </template>
+                <el-menu-item index="3-1" :route="{name:'403'}">403</el-menu-item>
+                <el-menu-item index="3-2" :route="{name:'404'}">404</el-menu-item>
+                <el-menu-item index="3-3" :route="{name:'500'}">500</el-menu-item>
+            </el-submenu>
             <el-menu-item index="4">
                 <i class="ele-icon-app"></i>
                 <span slot="title">应用</span>
@@ -53,25 +58,25 @@
 <script>
 export default {
   name: 'layout-aside',
-  data () {
+  data() {
     return {
       isCollapse: true,
       subMenuLeft: { paddingLeft: '52px' }
     }
   },
   computed: {
-    asideWidth () {
+    asideWidth() {
       return this.$store.state.global.asideWidth
     },
-    asideCollapse () {
+    asideCollapse() {
       return this.$store.state.global.asideCollapse
     }
   },
   methods: {
-    handleOpen (key, keyPath) {
+    handleOpen(key, keyPath) {
       console.log(key, keyPath)
     },
-    handleClose (key, keyPath) {
+    handleClose(key, keyPath) {
       console.log(key, keyPath)
     }
   }
@@ -80,18 +85,26 @@ export default {
 
 <style lang="less" >
 // 二级
-.child-padding{
-    .el-menu-item {
-      padding-left:56px !important;
-    }
+.child-padding {
+  .el-menu-item {
+    padding-left: 56px !important;
+  }
 }
 // 三级
 .parent-padding {
-   .el-submenu__title {
+  .el-submenu__title {
     padding-left: 56px !important;
+    height: 40px !important;
+    line-height: 40px !important;
+  }
+  &.el-menu-item {
+    height: 40px !important;
+    line-height: 40px !important;
   }
   .el-menu-item {
-      padding-left: 80px !important;
-    }
+    padding-left: 80px !important;
+    height: 40px !important;
+    line-height: 40px !important;
+  }
 }
 </style>

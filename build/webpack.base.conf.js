@@ -4,7 +4,7 @@ const utils = require('./utils')
 const config = require('../config')
 const vueLoaderConfig = require('./vue-loader.conf')
 
-function resolve (dir) {
+function resolve(dir) {
   return path.join(__dirname, '..', dir)
 }
 
@@ -27,21 +27,22 @@ module.exports = {
   output: {
     path: config.build.assetsRoot,
     filename: '[name].js',
-    publicPath: process.env.NODE_ENV === 'production'
-      ? config.build.assetsPublicPath
-      : config.dev.assetsPublicPath
+    publicPath:
+      process.env.NODE_ENV === 'production'
+        ? config.build.assetsPublicPath
+        : config.dev.assetsPublicPath
   },
   resolve: {
     extensions: ['.js', '.vue', '.json'],
     alias: {
-      'vue$': 'vue/dist/vue.esm.js',
-      '@': resolve('src'),
+      vue$: 'vue/dist/vue.esm.js',
+      '@': resolve('src')
     }
   },
   module: {
     rules: [
       //禁用eslint
-      ...(config.dev.useEslint ? [createLintingRule()] : []),
+      //...(config.dev.useEslint ? [createLintingRule()] : []),
       {
         test: /\.vue$/,
         loader: 'vue-loader',
@@ -50,7 +51,11 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client')]
+        include: [
+          resolve('src'),
+          resolve('test'),
+          resolve('node_modules/webpack-dev-server/client')
+        ]
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
@@ -69,19 +74,14 @@ module.exports = {
         }
       },
       {
-        test:/\.css$/,
-        loader:'style-loader!css-loader',
-        include:[
-          '/src/',
-          '/node_modules/element-ui/lib/'
-        ]
+        test: /\.css$/,
+        loader: 'style-loader!css-loader',
+        include: ['/src/', '/node_modules/element-ui/lib/']
       },
       {
-        test:/\.less$/,
-        loader:'style-loader!css-loader!less-loader',
-        include:[
-          '/src/'
-        ]
+        test: /\.less$/,
+        loader: 'style-loader!css-loader!less-loader',
+        include: ['/src/']
       },
       {
         test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,

@@ -19,12 +19,12 @@ export default {
   name: 'admin-nav-left',
   computed: {
     ...mapGetters(['isPc', 'pcAsideCollapse', 'mobielCollapse']),
-    shrink () {
+    shrink() {
       return this.pcAsideCollapse
         ? 'ele-icon-spread-left'
         : 'ele-icon-shrink-right'
     },
-    mobielArrow () {
+    mobielArrow() {
       return this.mobielCollapse
         ? 'ele-icon-shrink-right'
         : 'ele-icon-spread-left'
@@ -32,7 +32,7 @@ export default {
   },
   methods: {
     ...mapMutations(['setAsideCollapse', 'setAsideWidth']),
-    handleSelect (key, keyPath) {
+    handleSelect(key, keyPath) {
       if (key === '1') {
         this.setAsideCollapse()
         this.setAsideWidth()

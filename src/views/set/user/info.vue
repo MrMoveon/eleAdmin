@@ -61,7 +61,7 @@
 <script>
 export default {
   name: 'info',
-  data () {
+  data() {
     return {
       ruleForm: {
         username: '',
@@ -90,17 +90,21 @@ export default {
         ],
         email: [
           { required: true, message: '请输入邮箱地址', trigger: 'blur' },
-          { type: 'email', message: '请输入正确的邮箱地址', trigger: 'blur,change' }
+          {
+            type: 'email',
+            message: '请输入正确的邮箱地址',
+            trigger: 'blur,change'
+          }
         ],
         desc: [{ required: true, message: '请填写活动形式', trigger: 'blur' }]
       }
     }
   },
   methods: {
-    handleAvatarSuccess (res, file) {
+    handleAvatarSuccess(res, file) {
       this.ruleForm.imageUrl = URL.createObjectURL(file.raw)
     },
-    beforeAvatarUpload (file) {
+    beforeAvatarUpload(file) {
       const isJPG = file.type === 'image/jpeg'
       const isLt2M = file.size / 1024 / 1024 < 2
 
@@ -112,7 +116,7 @@ export default {
       }
       return isJPG && isLt2M
     },
-    submitForm (formName) {
+    submitForm(formName) {
       this.$refs[formName].validate(valid => {
         if (valid) {
           alert('submit!')
@@ -122,7 +126,7 @@ export default {
         }
       })
     },
-    resetForm (formName) {
+    resetForm(formName) {
       this.$refs[formName].resetFields()
     }
   }
